@@ -19,7 +19,8 @@ function NewSuspectForm(props) {
 				 
 		const formData = new FormData()
 		formData.append('firstName', state.firstName)
-		props.handleAddPost(formData); 
+		formData.append('lastName', state.lastName)
+		props.handleAddSuspect(formData); 
 		
 		// Have to submit the form now! We need a function!
 	  }
