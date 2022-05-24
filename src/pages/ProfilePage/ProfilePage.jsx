@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
-
 import userService from "../../utils/userService";
 import { useParams } from "react-router-dom";
+import TopNav from "../../components/TopNav/TopNav";
 
 function ProfilePage(props) {
 
@@ -28,7 +28,10 @@ function ProfilePage(props) {
 
 
 	return (
-		<h1>This is a profile page. All suspects for {username} will be displayed here</h1>
+		<>
+		<TopNav />
+		<h1>This is {username}'s profile page. All {username}'s suspects will be displayed here</h1>
+		</>
 	)
 }
 
