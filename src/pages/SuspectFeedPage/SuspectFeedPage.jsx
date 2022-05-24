@@ -21,4 +21,4 @@ function SuspectFeedPage({user, handleLogout}) {
 	)
 }
 
-export default SuspectFeed
+export default SuspectFeedPage
