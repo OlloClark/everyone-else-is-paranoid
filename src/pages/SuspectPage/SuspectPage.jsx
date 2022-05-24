@@ -1,11 +1,13 @@
 import React from "react";
 import TopNav from "../../components/TopNav/TopNav";
 
+
 function SuspectPage({user, handleLogout}) {
 	return(
 	<>
 	<TopNav user = {user} handleLogout={handleLogout} />
-	<h1>Logged in. Submit suspects here</h1>
+	<h1>Logged in. Submit Your first suspect here</h1>
+	
 	</>
 	)
 }

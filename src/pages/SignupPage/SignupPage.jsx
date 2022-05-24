@@ -4,11 +4,6 @@ import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui
 import userService from "../../utils/userService";
 import { useNavigate } from "react-router-dom";
 
-
-  
-
-
-
 export default function SignUpPage(props) {
 
   const navigate = useNavigate()
