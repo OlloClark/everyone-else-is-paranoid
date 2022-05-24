@@ -3,7 +3,8 @@ import { Button, Form, Grid, Segment } from 'semantic-ui-react'
 
 function NewSuspectForm(props) {
 	const [state, setState] = useState({
-		firstName: ""
+		firstName: "",
+		lastName: ""
 	})
 	
 	  function handleChange(e){
@@ -28,18 +29,41 @@ function NewSuspectForm(props) {
 	return(
 		<Grid textAlign='center' style={{ height: '25vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
+		<div>
+			<p>hello</p>
+		</div>
+
         <Segment>
+
+			<div>
+				Type first and last name. You'll get:
+				<br />
+				Suspect is DEFINITELY watching you
+				<br />
+				Suspect is MAYBE watching you
+				<br />
+				Suspect is NOT watching you
+			</div>
         
             <Form  autoComplete="off" onSubmit={handleSubmit}>
             
-              <Form.Input
+              	<Form.Input
                   className="form-control"
-                  name="caption"
+                  name="firstName"
                   value={state.firstName}
                   placeholder="first name"
                   onChange={handleChange}
                   required
-              />   
+              	/>   
+
+				<Form.Input
+                  className="form-control"
+                  name="lastName"
+                  value={state.lastName}
+                  placeholder="last name"
+                  onChange={handleChange}
+                  required
+              	/> 
               
               <Button
                 type="submit"
