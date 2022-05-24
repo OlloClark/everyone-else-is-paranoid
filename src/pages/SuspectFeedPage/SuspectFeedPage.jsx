@@ -1,16 +1,19 @@
 import React from "react";
 import TopNav from "../../components/TopNav/TopNav";
-import NewSuspectForm from "../../components/NewSuspectForm/NewSuspectForm";
+import AddSuspect from "../../components/NewSuspectForm/NewSuspectForm";
+import SuspectFeed from '../../components/SuspectFeed/SuspectFeed'; 
 
 
-function SuspectFeed({user, handleLogout}) {
+
+function SuspectFeedPage({user, handleLogout}) {
 
 
 	return(
 	<>
 	<TopNav user = {user} handleLogout={handleLogout} />
 	<h1>Logged in. Suspect Feed here</h1>
-	<NewSuspectForm />
+	<AddSuspect />
+	<SuspectFeed />
 
 	
 	
