@@ -12,7 +12,7 @@ function ProfilePage(props) {
 	async function getProfile() {
 		try {
 			const data = await userService.getProfile(username)
-			console.log(data, "<- data")
+			console.log(data, "<- getProfile data")
 			setUser(() => data.user)
 
 		} catch (err) {
@@ -29,7 +29,7 @@ function ProfilePage(props) {
 
 	return (
 		<>
-		<TopNav />
+		<TopNav user={props.user} handleLogout={props.handleLogout}/>
 		<h1>This is {username}'s profile page. All {username}'s suspects will be displayed here</h1>
 		</>
 	)
