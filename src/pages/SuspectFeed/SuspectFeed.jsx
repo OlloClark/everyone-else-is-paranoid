@@ -3,13 +3,13 @@ import TopNav from "../../components/TopNav/TopNav";
 import NewSuspectForm from "../../components/NewSuspectForm/NewSuspectForm";
 
 
-function SuspectPage({user, handleLogout}) {
+function SuspectFeed({user, handleLogout}) {
 
 
 	return(
 	<>
 	<TopNav user = {user} handleLogout={handleLogout} />
-	<h1>Logged in. Submit Your first suspect here</h1>
+	<h1>Logged in. Suspect Feed here</h1>
 	<NewSuspectForm />
 
 	
@@ -18,4 +18,4 @@ function SuspectPage({user, handleLogout}) {
 	)
 }
 
-export default SuspectPage
+export default SuspectFeed
