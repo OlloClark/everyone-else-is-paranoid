@@ -2,22 +2,28 @@ import React, { useState } from "react";
 import { Button, Form, Grid, Segment } from 'semantic-ui-react'
 
 function NewSuspectForm(props) {
+	const [selectedFile, setSelectedFile] = useState("")
 	const [state, setState] = useState({
 		firstName: "",
 		lastName: ""
 	})
+
+	function handleFileInput(e) {
+		setSelectedFile(e.target.files[0])
+	}
 	
-	  function handleChange(e){
+	function handleChange(e){
 		setState({
 		  ...state,
 		  [e.target.name]: e.target.value
 		})
 	  }
 	
-	  function handleSubmit(e){
+	function handleSubmit(e){
 		e.preventDefault()
 				 
 		const formData = new FormData()
+		formData.append("photo", selectedFile)
 		formData.append('firstName', state.firstName)
 		formData.append('lastName', state.lastName)
 		props.handleAddSuspect(formData); 
@@ -65,6 +71,14 @@ function NewSuspectForm(props) {
                   onChange={handleChange}
                   required
               	/> 
+
+				<Form.Input
+                className="form-control"
+                type="file"
+                name="photo"
+                placeholder="upload image"
+                onChange={handleFileInput}
+              />   
               
               <Button
                 type="submit"
