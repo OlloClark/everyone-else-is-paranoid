@@ -28,7 +28,7 @@ function ProfilePage(props) {
 
 
 	return (
-		<h1>This is a profile page. All suspects for this user will be displayed here</h1>
+		<h1>This is a profile page. All suspects for {username} will be displayed here</h1>
 	)
 }
 
