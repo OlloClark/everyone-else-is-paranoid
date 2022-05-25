@@ -7,6 +7,7 @@ import { Grid } from "semantic-ui-react";
 
 
 
+
 function SuspectFeedPage({user, handleLogout}) {
 	const [suspects, setSuspects] = useState([])
 	const [error, setError] = useState("");
@@ -24,8 +25,24 @@ function SuspectFeedPage({user, handleLogout}) {
 		
 	}
 
-
-
+	// R read in crud
+	async function getSuspects() {
+		try {
+		  const data = await suspectsAPI.getAll();
+		  console.log(data, " this is data,");
+		  setSuspects([...data.suspects]);
+		} catch (err) {
+		  console.log(err.message, " this is the error");
+		  setError(err.message);
+		}
+	  }
+	
+	  // useEffect runs once
+	  // the component is first rendered (whenever you first view the component)
+	  // Component Lifecycle in react
+	  useEffect(() => {
+		getSuspects();
+	  }, []);
 
 	return(
 	 <Grid centered>
