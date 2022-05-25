@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-function SuspectCard({suspect, isProfile, user}) { 
+function SuspectCard({suspect, isProfile, user}) {
 
   function suspectWatching(){
 		const suspectChoices = ["suspect is PROBABLY watching you", "suspect is DEFINITELY watching you"]
@@ -10,6 +10,15 @@ function SuspectCard({suspect, isProfile, user}) {
 	   const randChoice = Math.floor(Math.random() * suspectChoices.length);
 	   return (suspectChoices[randChoice])
 	 }
+
+   function showRealName() {
+    const suspectNames = ["Aldrich “Rick” Ames", "Carl Lody", "Emil Julius Klaus Fuchs", "Frederick “Fritz” Joubert Duquesne"]
+  
+    const randSuspectName = Math.floor(Math.random() * suspectNames.length)
+  
+    return (suspectNames[randSuspectName])
+  
+  }
 
   return (
     <Card key={suspect._id} raised>
@@ -39,7 +48,7 @@ function SuspectCard({suspect, isProfile, user}) {
         <Card.Description>
           {suspectWatching()} <br/>
           {suspect.firstName} <br />
-          Real name: Batman <br />
+          Real name: {showRealName()} <br />
           Other aliases: Robin <br />
           Affiliations: Moldova
           </Card.Description>
