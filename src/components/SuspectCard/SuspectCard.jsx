@@ -23,13 +23,19 @@ function SuspectCard({suspect, isProfile, user}) {
               />
               {suspect.user.username}
             </Link>
+            <p>Suspect's alias: {suspect.lastName}</p>
           </Card.Header>
         </Card.Content>
       )}
 
       <Image src={`${suspect.photoUrl}`} wrapped ui={false} />
       <Card.Content>
-        <Card.Description>{suspect.firstName}{suspect.lastName}</Card.Description>
+        <Card.Description>
+          {suspect.firstName} <br />
+          Real name: Batman <br />
+          Other aliases: Robin <br />
+          Affiliations: Moldova
+          </Card.Description>
       </Card.Content>
     </Card>
   );
