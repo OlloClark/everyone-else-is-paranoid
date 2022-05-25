@@ -26,7 +26,8 @@ function NewSuspectForm(props) {
 		formData.append("photo", selectedFile)
 		formData.append('firstName', state.firstName)
 		formData.append('lastName', state.lastName)
-		props.handleAddSuspect(formData); 
+		props.handleAddSuspect(formData);
+		console.log(formData)
 		
 		// Have to submit the form now! We need a function!
 	  }
