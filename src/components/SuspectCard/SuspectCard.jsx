@@ -20,6 +20,21 @@ function SuspectCard({suspect, isProfile, user}) {
   
   }
 
+  const aliases = ["Kane Potts", "Kaila Dean", "Jazmin Robertson", "Kiera Jefferson", "Yareli Hurst","Gracie Hernandez", "Joaquin Russell", "Kenny Cook", "Isabel Peck", "Dakota Mclean","Jimena Roberts", "Gordon Crane", "Kaden Watson", "Karla Yang", "Rudy Payne","Nikolai Massey", "Sofia Brooks", "Nia Duffy", "Kenneth Bolton", "Lara Perez","Vicente Bailey", "Brenton Miller", "Crystal Lawrence", "Talan Mcbride", "Zackary Wu"]
+
+  const randAlias = (aliases) => {
+    const res = [];
+    for (let i = 0; i < 4;) {
+      const random = Math.floor(Math.random() * aliases.length);
+      if (res.indexOf(aliases[random]) !== -1){
+        continue;
+      };
+      res.push(aliases[random]);
+      i++
+    }
+    return res.join(", ");
+  }
+
   return (
     <Card key={suspect._id} raised>
       {isProfile ? (
@@ -49,7 +64,7 @@ function SuspectCard({suspect, isProfile, user}) {
           {suspectWatching()} <br/>
           {suspect.firstName} <br />
           Real name: {showRealName()} <br />
-          Other aliases: Robin <br />
+          Aliases: {randAlias(aliases)}<br />
           Affiliations: Moldova
           </Card.Description>
       </Card.Content>
