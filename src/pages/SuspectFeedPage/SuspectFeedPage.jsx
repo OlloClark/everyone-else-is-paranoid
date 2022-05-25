@@ -11,9 +11,13 @@ function SuspectFeedPage({user, handleLogout}) {
 	const [suspects, setSuspects] = useState([])
 
 	async function handleAddSuspect(suspect) {
+		console.log(suspect)
 		const data = await suspectsAPI.create(suspect)
-		console.log(data, "<- this is the data")
+		console.log(data, "<- this is the new data")
+		setSuspects((suspects) => [data.suspect, ...suspects])
 	}
+
+
 
 
 	return(
