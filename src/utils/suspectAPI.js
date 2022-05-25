@@ -12,3 +12,11 @@ export function create(suspect) {
     
     }).then(res => res.json());
   }
+
+  export function getAll() {
+	  return fetch(BASE_URL, {
+		  headers: {
+			  Authorization: "Bearer" + tokenService.getToken(),
+		  },
+	  }).then((res) => res.json());
+  }
