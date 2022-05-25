@@ -9,12 +9,19 @@ import { Grid } from "semantic-ui-react";
 
 function SuspectFeedPage({user, handleLogout}) {
 	const [suspects, setSuspects] = useState([])
+	const [error, setError] = useState("");
 
 	async function handleAddSuspect(suspect) {
+		try {
 		console.log(suspect)
 		const data = await suspectsAPI.create(suspect)
 		console.log(data, "<- this is the new data")
 		setSuspects((suspects) => [data.suspect, ...suspects])
+		} catch (err) {
+			console.log(err);
+      		setError(err.message);
+		}
+		
 	}
 
 
