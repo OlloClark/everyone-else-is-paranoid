@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from "react";
+import { Grid } from "semantic-ui-react";
 import userService from "../../utils/userService";
 import { useParams } from "react-router-dom";
 import TopNav from "../../components/TopNav/TopNav";
+import SuspectGallery from "../../components/SuspectGallery/SuspectGallery";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 function ProfilePage(props) {
 
@@ -25,14 +28,34 @@ function ProfilePage(props) {
 		getProfile();
 	  }, []);
 
-
-
+	  if (error) {
+		return (
+		  <>
+			<TopNav handleLogout={props.handleLogout} user={props.user}/>
+			<ErrorMessage error={error} />;
+		  </>
+		);
+	  }
+	  
 	return (
-		<>
-		<TopNav user={props.user} handleLogout={props.handleLogout}/>
-		<h1>This is {username}'s profile page. All {username}'s suspects will be displayed here</h1>
-		</>
-	)
+		<Grid>
+		  <Grid.Row>
+			<Grid.Column>
+			  <TopNav user={props.user} handleLogout={props.handleLogout}/>
+			</Grid.Column>
+		  </Grid.Row>
+		  <Grid.Row centered>
+			<Grid.Column style={{ maxWidth: 750 }}>
+			<SuspectGallery
+				isProfile={true}
+				suspects={props.suspects}
+				numPhotosCol={3}
+				user={props.user}
+			  />
+			</Grid.Column>
+		  </Grid.Row>
+		</Grid>
+	  );
 }
 
 export default ProfilePage
