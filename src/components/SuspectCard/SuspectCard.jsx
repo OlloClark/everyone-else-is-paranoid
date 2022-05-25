@@ -1,10 +1,39 @@
 import React from 'react';
+import { Card, Image } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
-function SuspectCard(props) { 
+function SuspectCard({suspect, isProfile, user}) { 
 
   return (
-    <div>This is a suspect card</div>
+    <Card key={suspect._id} raised>
+      {isProfile ? (
+        ""
+      ) : (
+        <Card.Content textAlign="left">
+          <Card.Header>
+            <Link to={`/${suspect.user.username}`}>
+              <Image
+                size="large"
+                avatar
+                src={
+                  suspect.user.photoUrl
+                    ? suspect.user.photoUrl
+                    : "https://react.semantic-ui.com/images/wireframe/square-image.png"
+                }
+              />
+              {suspect.user.username}
+            </Link>
+          </Card.Header>
+        </Card.Content>
+      )}
+
+      <Image src={`${suspect.photoUrl}`} wrapped ui={false} />
+      <Card.Content>
+        <Card.Description>{suspect.firstName}{suspect.lastName}</Card.Description>
+      </Card.Content>
+    </Card>
   );
+
 }
 
 export default SuspectCard;
