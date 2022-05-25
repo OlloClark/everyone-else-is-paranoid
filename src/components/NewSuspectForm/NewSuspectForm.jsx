@@ -32,8 +32,7 @@ function NewSuspectForm(props) {
 		// Have to submit the form now! We need a function!
 	  }
 
-
-
+	  
 	return(
 		<Grid textAlign='center' style={{ height: '25vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>

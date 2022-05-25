@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 
 function SuspectCard({suspect, isProfile, user}) { 
 
+  function suspectWatching(){
+		const suspectChoices = ["suspect is PROBABLY watching you", "suspect is DEFINITELY watching you"]
+	   
+	   const randChoice = Math.floor(Math.random() * suspectChoices.length);
+	   return (suspectChoices[randChoice])
+	 }
+
   return (
     <Card key={suspect._id} raised>
       {isProfile ? (
@@ -23,7 +30,6 @@ function SuspectCard({suspect, isProfile, user}) {
               />
               {suspect.user.username}
             </Link>
-            <p>Suspect's alias: {suspect.lastName}</p>
           </Card.Header>
         </Card.Content>
       )}
@@ -31,6 +37,7 @@ function SuspectCard({suspect, isProfile, user}) {
       <Image src={`${suspect.photoUrl}`} wrapped ui={false} />
       <Card.Content>
         <Card.Description>
+          {suspectWatching()} <br/>
           {suspect.firstName} <br />
           Real name: Batman <br />
           Other aliases: Robin <br />
