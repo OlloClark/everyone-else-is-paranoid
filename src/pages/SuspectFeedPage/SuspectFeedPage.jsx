@@ -61,7 +61,7 @@ function SuspectFeedPage({user, handleLogout}) {
     <Grid.Column>
 	<SuspectGallery
 		suspects={suspects}
-		numPhotosCol={3}
+		numPhotosCol={1}
 		isProfile={false}
 		user={user}
 	/>

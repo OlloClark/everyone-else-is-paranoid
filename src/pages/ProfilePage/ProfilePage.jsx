@@ -3,11 +3,13 @@ import { Grid } from "semantic-ui-react";
 import userService from "../../utils/userService";
 import { useParams } from "react-router-dom";
 import TopNav from "../../components/TopNav/TopNav";
+import ProfileBio from "../../components/ProfileBio/ProfileBio";
 import SuspectGallery from "../../components/SuspectGallery/SuspectGallery";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 function ProfilePage(props) {
 
+	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState("")
 	const [user, setUser] = useState({})
 	const {username} = useParams();
@@ -20,7 +22,7 @@ function ProfilePage(props) {
 
 		} catch (err) {
 			console.log(err)
-			setError("Profile Doesn't exists, check express terminal!")
+			setError("Profile doesn't exist, check express terminal")
 		}
 	}
 
@@ -36,7 +38,13 @@ function ProfilePage(props) {
 		  </>
 		);
 	  }
-	  
+
+	  if (loading) {
+		  return (
+			  <h1>Acquiring SSN, parsing bank details, transferring...</h1>
+		  )
+	  }
+
 	return (
 		<Grid>
 		  <Grid.Row>
@@ -44,6 +52,11 @@ function ProfilePage(props) {
 			  <TopNav user={props.user} handleLogout={props.handleLogout}/>
 			</Grid.Column>
 		  </Grid.Row>
+		  <Grid.Row>
+			<Grid.Column>
+				<ProfileBio/>
+			</Grid.Column>
+			</Grid.Row>
 		  <Grid.Row centered>
 			<Grid.Column style={{ maxWidth: 750 }}>
 			<SuspectGallery
