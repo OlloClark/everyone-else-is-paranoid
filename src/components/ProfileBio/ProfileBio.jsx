@@ -18,7 +18,9 @@ function ProfileBio({ user }) {
         </Grid.Column>
         <Grid.Column textAlign="left" style={{ maxWidth: 450 }}>
           <Segment vertical>
-            <h3>{user.username}</h3>
+            <h2>BIOGRAPHY REDACTED</h2>
+            <h3><s>{user.username}</s></h3>
+            <h3>62354762354827699767612738734872364827634723649236492376476273462837</h3>
           </Segment>
         </Grid.Column>
       </Grid.Row>
