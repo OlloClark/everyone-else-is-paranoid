@@ -58,6 +58,17 @@ export default function Feed({user, handleLogout}) {
     getSuspects();
   }, []);
 
+  async function removeSuspect(suspectId){
+    try {
+        const data = await suspectsAPI.removeSuspect(suspectId);
+        console.log("removal>>>>>>>",data,"<<<< removal")
+        getSuspects()
+    } catch (err) {
+        console.log(err)
+        setError(err.message)
+    }
+}
+
 
 
   if (error) {
@@ -98,6 +109,7 @@ export default function Feed({user, handleLogout}) {
             isProfile={false}
             loading={loading}
             user={user}
+            removeSuspect={removeSuspect}
           />
         </Grid.Column>
       </Grid.Row>

@@ -2,9 +2,13 @@ import React from "react";
 import { Card, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import suspicious from "../../assets/suspicious.png"
-function SuspectCard({ suspect, isProfile, user }) {
+function SuspectCard({ suspect, isProfile, user, removeSuspect }) {
 
-  function suspectWatching(){
+  function handleDel() {
+    removeSuspect(suspect._id)
+  }
+
+  function suspectWatching() {
 		const suspectChoices = ["suspect is PROBABLY watching you", "suspect is DEFINITELY watching you"]
 	   
 	   const randChoice = Math.floor(Math.random() * suspectChoices.length);
@@ -64,6 +68,15 @@ function SuspectCard({ suspect, isProfile, user }) {
           Aliases: {randAlias(aliases)}<br />
           Affiliations: Moldova
           </Card.Description>
+          <Container textAlign='right'>
+                <Icon
+                align="right"
+                name={"x"}
+                size="large"
+                color="red"
+                onClick={handleDel}
+                />
+            </Container>
       </Card.Content>
     </Card>
   );

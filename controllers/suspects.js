@@ -31,9 +31,15 @@ function create(req, res){
     }
 }
 
-function deleteSuspect(req,res) {
-    //check Suspect's user is logged in
-    // 
+async function deleteSuspect(req, res){
+    try {
+        const suspect = await Suspect.findOne({'suspects.id': req.params.id})
+        post.remove()
+        console.log(post,"has been deleted")
+        res.json({data:'SUSPECT HAS BEEN REDACTED'})
+    } catch(err){
+        res.status(400).json({err})
+    }
 }
 
 async function index(req, res){
