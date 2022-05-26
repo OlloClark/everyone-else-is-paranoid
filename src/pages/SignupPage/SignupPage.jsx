@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react'
 import userService from "../../utils/userService";
 import { useNavigate } from "react-router-dom";
 
@@ -8,72 +8,75 @@ export default function SignUpPage(props) {
 
   const navigate = useNavigate()
 
-  const [error, setError] = useState("")
+  const [error, setError] = useState('')
   const [state, setState] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",  
+    username: '',
+    email: '',
+    password: '',
+    passwordConf: '',
   })
 
-  const [selectedFile, setSelectedFile] = useState("");
+  const [selectedFile, setSelectedFile] = useState('');
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e){
     e.preventDefault()
 
-    const formData = new FormData();
-    formData.append("photo", selectedFile)
+    // Create form Data, because we're sending a multipart/formData request, 
+    // because we are sending over multiple requests, because we're uploading a photo!
+    const formData = new FormData(); // new FormData is from the browser
+    formData.append('photo', selectedFile);
+
+    // wrote way of appending each key value pair to form Data
+    // formData.append('username', state.username);
+    // formData.append('email', state.email);
 
     for (let fieldName in state){
       formData.append(fieldName, state[fieldName])
     }
-  
+
+    // console.log(formData, " <- formData") // <- this doesn't allow you to look at the formdData object
+    // console.log(formData.forEach((item) => console.log(item))); // <- to look at the keys, you must forEach over it
+
     try {
-      await userService.signup(formData)
-      props.handleSignUpOrLogin()
-      navigate("/")
-    } catch(err) {
-      console.log(err.message)
+
+      await userService.signup(formData) // <- we must pass the argument as formData when we have a
+      // photo
+      props.handleSignUpOrLogin(); // <- this will decode the token from local storage
+      // that we just recieved as a respone to our userService.signup fetch call,
+      // and decode and update the state in our App component
+      navigate('/')
+
+    } catch(err){
+      console.log(err.message);
       setError(err.message)
     }
+
   }
 
-  function handleChange(e) {
+  function handleChange(e){
     setState({
-      ...state,
+      ...state, 
       [e.target.name]: e.target.value
     })
   }
 
-  function handleFileInput(e) {
-    console.log(e.target.files, "<- this is e.target.files")
-    setSelectedFile(e.target.files[0])
+  function handleFileInput(e){
+    console.log(e.target.files);
+    setSelectedFile(e.target.files[0]);
   }
 
 
-
-
-
-
-
-
-
-
-
-
   return (
-    <>
-      <h1>Signup PAGE</h1>
-      <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
+    <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="teal" textAlign="center">
-          <Image src="https://imgur.com/T37ac8d" /> Sign Up. Quick. You haven't much time.
+        <Header as="h2" color="black" textAlign="center">
+          <Image src="https://i.imgur.com/s4LrnlU.png" /> Sign Up. Do it.
         </Header>
         <Form autoComplete="off" onSubmit={handleSubmit}>
           <Segment stacked>
             <Form.Input
               name="username"
-              placeholder="username"
+              placeholder="What should we call you?"
               value={state.username}
               onChange={handleChange}
               required
@@ -81,7 +84,7 @@ export default function SignUpPage(props) {
             <Form.Input
               type="email"
               name="email"
-              placeholder="email"
+              placeholder="Electronic mailing address"
               value={state.email}
               onChange={handleChange}
               required
@@ -89,16 +92,16 @@ export default function SignUpPage(props) {
             <Form.Input
               name="password"
               type="password"
-              placeholder="password"
+              placeholder="Word to achieve passage"
               value={state.password}
               onChange={handleChange}
               required
             />
             <Form.Input
-              name="confirmPassword"
+              name="passwordConf"
               type="password"
-              placeholder="Confirm Password"
-              value={state.confirmPassword}
+              placeholder="Repeat your passage word. Tell no one. Not even you."
+              value={state.passwordConf}
               onChange={handleChange}
               required
             />
@@ -111,21 +114,12 @@ export default function SignUpPage(props) {
               />
             </Form.Field>
             <Button type="submit" className="btn">
-              Signup
+              Proceed
             </Button>
           </Segment>
           {error ? <ErrorMessage error={error} /> : null}
         </Form>
       </Grid.Column>
     </Grid>
-    
-      <ul>
-        <li>Read the User Model, You can change it to fit your needs</li>
-        <li>
-          Make sure you read the Signup up func in the User Controller, to know
-          how it is setup to find the user!
-        </li>
-      </ul>
-    </>
   );
 }
