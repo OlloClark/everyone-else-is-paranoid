@@ -1,19 +1,24 @@
 import React, { useState } from "react";
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import { useNavigate, Link } from "react-router-dom";
 import "./LoginPage.css";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import userService from "../../utils/userService";
-import Banner from "../../components/Banner/Banner";
-import OpeningBlurb from "../../components/OpeningBlurb/OpeningBlurb";
+import { useNavigate, Link } from "react-router-dom";
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment,
+} from "semantic-ui-react";
 
-function LoginPage(props) {
-
-  const [error, setError] = useState("")
+export default function LoginPage(props) {
+  const [error, setError] = useState("");
   const [state, setState] = useState({
     email: "",
     password: "",
-  })
+  });
 
   const navigate = useNavigate();
 
@@ -21,7 +26,7 @@ function LoginPage(props) {
     setState({
       ...state,
       [e.target.name]: e.target.value,
-    })
+    });
   }
 
   async function handleSubmit(e) {
@@ -29,15 +34,17 @@ function LoginPage(props) {
 
     try {
       await userService.login(state);
+      // Route to wherever you want!
       props.handleSignUpOrLogin();
       navigate("/");
     } catch (err) {
+      // Invalid user data (probably duplicate email)
       setError(err.message);
     }
   }
 
   return (
-      <>
+    <>
       <Grid
         textAlign="center"
        
@@ -45,15 +52,14 @@ function LoginPage(props) {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="black" textAlign="center">
-            Log-in to your
-            account
+            <Image src="https://i.imgur.com/s4LrnlU.png" /> Quick. You haven't much time.
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Segment stacked>
               <Form.Input
                 type="email"
                 name="email"
-                placeholder="email"
+                placeholder="Electronic mailing address"
                 value={state.email}
                 onChange={handleChange}
                 required
@@ -61,7 +67,7 @@ function LoginPage(props) {
               <Form.Input
                 name="password"
                 type="password"
-                placeholder="password"
+                placeholder="Word to achieve passage"
                 value={state.password}
                 onChange={handleChange}
                 required
@@ -78,7 +84,7 @@ function LoginPage(props) {
             </Segment>
           </Form>
           <Message>
-            New to us? <Link to="/signup">Sign Up</Link>
+            Haven't heard of us? Good. <Link to="/signup">Join us</Link>
           </Message>
           {error ? <ErrorMessage error={error} /> : null}
         </Grid.Column>
@@ -87,4 +93,3 @@ function LoginPage(props) {
   );
 }
 
-export default LoginPage
