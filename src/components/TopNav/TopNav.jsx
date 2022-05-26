@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Header, Segment, Image, Icon } from "semantic-ui-react";
+import suspicious from "../../assets/suspicious.png"
 
 export default function TopNav({ user, handleLogout }) {
     console.log(user, 'user in header')
@@ -18,9 +19,10 @@ export default function TopNav({ user, handleLogout }) {
         <Link to={`/${user?.username}`}>
           <Image
             src={
-              user?.photoUrl
-                ? user?.photoUrl
-                : "https://react.semantic-ui.com/images/wireframe/square-image.png"
+              // user?.photoUrl
+              //   ? user?.photoUrl
+              //   : "https://react.semantic-ui.com/images/wireframe/square-image.png"
+              suspicious
             }
             avatar
           ></Image>
