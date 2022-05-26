@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import suspicious from "../../assets/suspicious.png"
 function SuspectCard({ suspect, isProfile, user, removeSuspect }) {
 
-  function handleDel() {
-    removeSuspect(suspect._id)
-  }
+  // function handleDel() {
+  //   removeSuspect(suspect._id)
+  // }
 
   function suspectWatching() {
 		const suspectChoices = ["suspect is PROBABLY watching you", "suspect is DEFINITELY watching you"]
@@ -74,7 +74,7 @@ function SuspectCard({ suspect, isProfile, user, removeSuspect }) {
                 name="user secret"
                 size="large"
                 color="black"
-                onClick={handleDel}
+                onClick={removeSuspect()}
                 />
             </Container>
       </Card.Content>
