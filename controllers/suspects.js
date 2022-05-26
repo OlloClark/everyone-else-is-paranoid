@@ -6,7 +6,8 @@ const s3 = new S3();
 
 module.exports = {
     create,
-    index
+    index,
+    delete: deleteSuspect
 }
 
 function create(req, res){
@@ -28,6 +29,11 @@ function create(req, res){
         console.log(err)
         res.json({data: err})
     }
+}
+
+function deleteSuspect(req,res) {
+    //check Suspect's user is logged in
+    // 
 }
 
 async function index(req, res){
