@@ -3,15 +3,8 @@ import "./LoginPage.css";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import userService from "../../utils/userService";
 import { useNavigate, Link } from "react-router-dom";
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Message,
-  Segment,
-} from "semantic-ui-react";
+import { Button, Form, Grid, Header, Image, Message, Segment } from "semantic-ui-react";
+import Banner from "../../components/Banner/Banner";
 
 export default function LoginPage(props) {
   const [error, setError] = useState("");
@@ -53,6 +46,7 @@ export default function LoginPage(props) {
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="black" textAlign="center">
             <Image src="https://i.imgur.com/s4LrnlU.png" /> Quick. You haven't much time.
+            <Banner />
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Segment stacked>
