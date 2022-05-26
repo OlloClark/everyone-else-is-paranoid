@@ -10,7 +10,7 @@ function ProfileBio({ user }) {
           <Image
             src={gov}
             avatar
-            size="small"
+            size="medium"
           />
           <Segment vertical>
             <h2>BIOGRAPHY REDACTED</h2>
