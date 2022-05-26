@@ -74,7 +74,7 @@ function SuspectCard({ suspect, isProfile, user, removeSuspect }) {
                 name="user secret"
                 size="large"
                 color="black"
-                onClick={removeSuspect()}
+                onClick={removeSuspect}
                 />
             </Container>
       </Card.Content>
