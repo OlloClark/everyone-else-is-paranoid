@@ -9,8 +9,7 @@ function ProfileBio({ user }) {
         <Grid.Column textAlign="center" style={{ maxWidth: 300 }}>
           <Image
             src={gov}
-            avatar
-            size="medium"
+            size="large"
           />
           <Segment vertical>
             <h2>BIOGRAPHY REDACTED</h2>
