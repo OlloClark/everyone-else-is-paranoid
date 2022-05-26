@@ -71,9 +71,9 @@ function SuspectCard({ suspect, isProfile, user, removeSuspect }) {
           <Container textAlign='right'>
                 <Icon
                 align="right"
-                name={"x"}
+                name="user secret"
                 size="large"
-                color="red"
+                color="black"
                 onClick={handleDel}
                 />
             </Container>
