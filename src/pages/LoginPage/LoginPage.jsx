@@ -5,6 +5,7 @@ import userService from "../../utils/userService";
 import { useNavigate, Link } from "react-router-dom";
 import { Button, Form, Grid, Header, Image, Message, Segment } from "semantic-ui-react";
 import Banner from "../../components/Banner/Banner";
+import suspicious from "../../assets/suspicious.png"
 
 export default function LoginPage(props) {
   const [error, setError] = useState("");
@@ -45,7 +46,7 @@ export default function LoginPage(props) {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="black" textAlign="center">
-            <Image src="https://i.imgur.com/s4LrnlU.png" /> Quick. You haven't much time.
+            <Image src={suspicious} /> Quick. You haven't much time.
             <Banner />
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
