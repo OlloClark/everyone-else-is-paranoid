@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, Grid, Segment } from "semantic-ui-react";
+import gov from "../../assets/gov.png"
 
 function ProfileBio({ user }) {
   return (
@@ -7,11 +8,7 @@ function ProfileBio({ user }) {
       <Grid.Row>
         <Grid.Column textAlign="center" style={{ maxWidth: 300 }}>
           <Image
-            src={`${
-              user.photoUrl
-                ? user.photoUrl
-                : "https://react.semantic-ui.com/images/wireframe/square-image.png"
-            } `}
+            src={gov}
             avatar
             size="small"
           />
