@@ -5,7 +5,7 @@ import AddSuspectForm from "../../components/AddSuspectForm/AddSuspectForm";
 import SuspectGallery from "../../components/SuspectGallery/SuspectGallery";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
-import * as suspectsAPI from "../../utils/suspectApi";
+import * as suspectsAPI from "../../utils/suspectAPI";
 
 
 
