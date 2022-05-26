@@ -1,8 +1,7 @@
-import React from 'react';
+import React from "react";
 import { Card, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-
-function SuspectCard({suspect, isProfile, user}) {
+function SuspectCard({ suspect, isProfile, user }) {
 
   function suspectWatching(){
 		const suspectChoices = ["suspect is PROBABLY watching you", "suspect is DEFINITELY watching you"]
@@ -35,6 +34,7 @@ function SuspectCard({suspect, isProfile, user}) {
     return res.join(", ");
   }
 
+
   return (
     <Card key={suspect._id} raised>
       {isProfile ? (
@@ -61,8 +61,8 @@ function SuspectCard({suspect, isProfile, user}) {
       <Image src={`${suspect.photoUrl}`} wrapped ui={false} />
       <Card.Content>
         <Card.Description>
+          {suspect.suspectName}  <br/>
           {suspectWatching()} <br/>
-          {suspect.firstName} <br />
           Real name: {showRealName()} <br />
           Aliases: {randAlias(aliases)}<br />
           Affiliations: Moldova
@@ -70,7 +70,6 @@ function SuspectCard({suspect, isProfile, user}) {
       </Card.Content>
     </Card>
   );
-
 }
 
 export default SuspectCard;

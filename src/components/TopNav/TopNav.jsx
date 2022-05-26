@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Header, Segment, Image, Icon } from "semantic-ui-react";
 
-function TopNav({ user, handleLogout }) {
-    console.log(user, "<- user")
+export default function TopNav({ user, handleLogout }) {
+    console.log(user, 'user in header')
   return (
     <Segment clearing>
       <Header as="h2" floated="right">
         <Link to="/">
-          <Icon name="home"></Icon>
+          <Icon size= "large" color="black" name="eye"></Icon>
         </Link>
-        <Link to="" onClick={handleLogout}>
+        <Link  to="" onClick={handleLogout}>
           Logout
         </Link>
       </Header>
@@ -29,5 +29,3 @@ function TopNav({ user, handleLogout }) {
     </Segment>
   );
 }
-
-export default TopNav

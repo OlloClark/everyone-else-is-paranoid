@@ -12,6 +12,7 @@ function ProfilePage(props) {
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState("")
 	const [user, setUser] = useState({})
+	const [suspects, setSuspects] = useState([]);
 	const {username} = useParams();
 
 	async function getProfile() {
@@ -19,8 +20,9 @@ function ProfilePage(props) {
 			const data = await userService.getProfile(username)
 			console.log(data, "<- getProfile data")
 			setUser(() => data.user)
-
-		} catch (err) {
+			setLoading(() => false);
+			setSuspects(() => data.suspects);
+			} catch (err) {
 			console.log(err)
 			setError("Profile doesn't exist, check express terminal")
 		}
@@ -41,7 +43,10 @@ function ProfilePage(props) {
 
 	  if (loading) {
 		  return (
+			  <>
+			<TopNav handleLogout={props.handleLogout} user={props.user}/>
 			  <h1>Acquiring SSN, parsing bank details, transferring...</h1>
+			</>
 		  )
 	  }
 

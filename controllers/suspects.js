@@ -6,6 +6,7 @@ const s3 = new S3();
 
 module.exports = {
     create,
+    index
 }
 
 function create(req, res){
@@ -14,10 +15,9 @@ function create(req, res){
         const filePath = `${uuidv4()}/${req.file.originalname}`
         const params = {Bucket: process.env.BUCKET_NAME, Key: filePath, Body: req.file.buffer};
         s3.upload(params, async function(err, data){
-			console.log(err, 'from aws')
-            const suspect = await Suspect.create({firstName: req.body.firstName, user: req.user, photoUrl: data.Location});
+			console.log(err, ' from aws')
+            const suspect = await Suspect.create({suspectName: req.body.suspectName, user: req.user, photoUrl: data.Location});
             console.log(suspect)
-			// make sure the post we're sending back has the user populated
 			await suspect.populate('user');
 		
             res.status(201).json({suspect: suspect})
@@ -27,5 +27,15 @@ function create(req, res){
     } catch(err){
         console.log(err)
         res.json({data: err})
+    }
+}
+
+async function index(req, res){
+    try {
+       
+        const suspects = await Suspect.find({}).populate('user').exec()
+        res.status(200).json({suspects})
+    } catch(err){
+
     }
 }
