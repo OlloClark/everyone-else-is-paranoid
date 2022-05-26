@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import suspicious from "../../assets/suspicious.png"
 function SuspectCard({ suspect, isProfile, user }) {
 
   function suspectWatching(){
@@ -46,11 +47,7 @@ function SuspectCard({ suspect, isProfile, user }) {
               <Image
                 size="large"
                 avatar
-                src={
-                  suspect.user.photoUrl
-                    ? suspect.user.photoUrl
-                    : "https://react.semantic-ui.com/images/wireframe/square-image.png"
-                }
+                src={suspicious}
               />
               {suspect.user.username}
             </Link>
