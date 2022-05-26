@@ -3,9 +3,9 @@ import { Image, Grid, Segment } from "semantic-ui-react";
 
 function ProfileBio({ user }) {
   return (
-    <Grid textAlign="center" columns={2}>
+    <Grid textAlign="center" columns={1} >
       <Grid.Row>
-        <Grid.Column>
+        <Grid.Column textAlign="center" style={{ maxWidth: 300 }}>
           <Image
             src={`${
               user.photoUrl
@@ -15,14 +15,14 @@ function ProfileBio({ user }) {
             avatar
             size="small"
           />
-        </Grid.Column>
-        <Grid.Column textAlign="left" style={{ maxWidth: 450 }}>
           <Segment vertical>
             <h2>BIOGRAPHY REDACTED</h2>
             <h3><s>{user.username}</s></h3>
-            <h3>62354762354827699767612738734872364827634723649236492376476273462837</h3>
+            <h3>676127387348723648462837</h3>
+            <h3>623547623548276997627334</h3>
+            <h3>276347236492364923764734</h3>
           </Segment>
-        </Grid.Column>
+        </Grid.Column >
       </Grid.Row>
     </Grid>
   );
