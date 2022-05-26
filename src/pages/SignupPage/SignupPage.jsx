@@ -3,6 +3,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react'
 import userService from "../../utils/userService";
 import { useNavigate } from "react-router-dom";
+import suspicious from "../../assets/suspicious.png"
 
 export default function SignUpPage(props) {
 
@@ -70,7 +71,7 @@ export default function SignUpPage(props) {
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="black" textAlign="center">
-          <Image src="https://i.imgur.com/s4LrnlU.png" /> Sign Up. Do it.
+          <Image src={suspicious} /> Sign Up. Do it.
         </Header>
         <Form autoComplete="off" onSubmit={handleSubmit}>
           <Segment stacked>
