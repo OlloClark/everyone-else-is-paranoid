@@ -14,7 +14,7 @@ import { Grid } from "semantic-ui-react";
 
 
 
-export default function Feed({user, handleLogout}) {
+export default function Feed({user, handleLogout, removeSuspect}) {
   console.log(suspectsAPI, " <-- suspectsAPI")
   const [suspects, setSuspects] = useState([]);
   const [loading, setLoading] = useState(true);
