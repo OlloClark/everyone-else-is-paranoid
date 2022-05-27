@@ -1,4 +1,4 @@
-const Post = require('../models/post');
+const Suspect = require('../models/suspect');
 
 module.exports = {
     create,
