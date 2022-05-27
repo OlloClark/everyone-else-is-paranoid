@@ -14,9 +14,11 @@ function create(req, res){
     try {
         const filePath = `${uuidv4()}/${req.file.originalname}`
         const params = {Bucket: process.env.BUCKET_NAME, Key: filePath, Body: req.file.buffer};
+
         s3.upload(params, async function(err, data){
-			console.log(err, ' from aws')
+			console.log(err, '<- from aws')
             const suspect = await Suspect.create({suspectName: req.body.suspectName, user: req.user, photoUrl: data.Location});
+            
             console.log(suspect)
 			await suspect.populate('user');
 		
@@ -32,8 +34,8 @@ function create(req, res){
 
 async function index(req, res){
     try {
-       
         const suspects = await Suspect.find({}).populate('user').exec()
+
         res.status(200).json({suspects})
     } catch(err){
 

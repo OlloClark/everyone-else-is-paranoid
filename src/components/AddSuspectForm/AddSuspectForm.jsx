@@ -12,7 +12,6 @@ export default function AddSuspectForm(props){
     setSelectedFile(e.target.files[0])
   }
 
-
   function handleChange(e){
     setState({
       ...state,
@@ -27,10 +26,7 @@ export default function AddSuspectForm(props){
     formData.append('photo', selectedFile)
     formData.append('suspectName', state.suspectName)
     props.handleAddSuspect(formData); 
-    
-    // Have to submit the form now! We need a function!
   }
-
 
   return (
     

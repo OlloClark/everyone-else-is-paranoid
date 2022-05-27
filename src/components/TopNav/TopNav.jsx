@@ -19,9 +19,6 @@ export default function TopNav({ user, handleLogout }) {
         <Link to={`/${user?.username}`}>
           <Image
             src={
-              // user?.photoUrl
-              //   ? user?.photoUrl
-              //   : "https://react.semantic-ui.com/images/wireframe/square-image.png"
               suspicious
             }
             avatar

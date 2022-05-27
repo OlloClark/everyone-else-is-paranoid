@@ -9,23 +9,18 @@ import userService from "../../utils/userService";
 import { useParams } from "react-router-dom";
 import * as snoopsAPI from '../../utils/snoopAPI';
 
-
-
-
-
 export default function ProfilePage(props) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [user, setUser] = useState({});
   const [suspects, setSuspects] = useState([]);
-  // We need to grab the username out of the url,
   const { username } = useParams();
 
   async function addSnoop(suspectId){
     try {
       const data = await snoopsAPI.create(suspectId)
       console.log(data, ' <- response from the server when we add a snoop');
-      getProfile(); // <- to go get the updated posts with the like
+      getProfile();
     } catch(err){
       console.log(err)
       setError(err.message)
@@ -57,17 +52,9 @@ export default function ProfilePage(props) {
     }
   }
 
-  
-
-
-  // then when the component loads we can use that username to fetch all the users data
-  // then we can store that in state
   useEffect(() => {
     getProfile();
   }, []);
-
-
-
 
   if (error) {
     return (

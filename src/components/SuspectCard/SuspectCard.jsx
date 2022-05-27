@@ -5,10 +5,6 @@ import suspicious from "../../assets/suspicious.png"
 
 function SuspectCard({ suspect, isProfile, user, removeSnoop, addSnoop }) {
 
-
-  // We need to know if the logged in user has liked this particular post!
-  // we search the array of objects that is post.likes to see if the logged in users
-  // id exists in that array of objects
   const snoopIndex = suspect.snoops.findIndex(
     (snoop) => snoop.username === user.username
   );
@@ -18,20 +14,17 @@ function SuspectCard({ suspect, isProfile, user, removeSnoop, addSnoop }) {
       ? () => removeSnoop(suspect.snoops[snoopIndex]._id)
       : () => addSnoop(suspect._id);
 
-  // if the logged users id exists, the heart should be red, because the logged in user has liked the post
-  // and the clicked handler should removeLike
   const snoopColor = snoopIndex > -1 ? "purple" : "black";
 
   function suspectWatching() {
 		const suspectChoices = ["suspect is PROBABLY watching you", "suspect is DEFINITELY watching you"]
-	   
-	   const randChoice = Math.floor(Math.random() * suspectChoices.length);
-	   return (suspectChoices[randChoice])
+	  const randChoice = Math.floor(Math.random() * suspectChoices.length);
+
+	  return (suspectChoices[randChoice])
 	 }
 
    function showRealName() {
     const suspectNames = ["Aldrich “Rick” Ames", "Carl Lody", "Emil Julius Klaus Fuchs", "Frederick “Fritz” Joubert Duquesne"]
-  
     const randSuspectName = Math.floor(Math.random() * suspectNames.length)
   
     return (suspectNames[randSuspectName])
@@ -52,7 +45,6 @@ function SuspectCard({ suspect, isProfile, user, removeSnoop, addSnoop }) {
     }
     return res.join(", ");
   }
-
 
   return (
     <Card key={suspect._id} raised>

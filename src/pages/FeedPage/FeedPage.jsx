@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import TopNav from "../../components/TopNav/TopNav";
 import AddSuspectForm from "../../components/AddSuspectForm/AddSuspectForm";
 import SuspectGallery from "../../components/SuspectGallery/SuspectGallery";
@@ -18,8 +17,8 @@ export default function Feed({user, handleLogout}) {
   async function addSnoop(suspectId){
     try {
       const data = await snoopsAPI.create(suspectId)
-      console.log(data, ' <- the response from the server when we add a snoop');
-      getSuspects(); // <- to go get the updated posts with the like
+      console.log(data, ' <- response from the server when we add a snoop');
+      getSuspects();
     } catch(err){
       console.log(err)
       console.log("this error is coming from FeedPage")
@@ -30,7 +29,7 @@ export default function Feed({user, handleLogout}) {
   async function removeSnoop(snoopId){
     try {
       const data = await snoopsAPI.removeSnoop(snoopId);
-      console.log(data, '<-  this is the response from the server when we remove a snoop')
+      console.log(data, '<-  this is the response when we remove a snoop')
       getSuspects()
       
     } catch(err){
@@ -39,16 +38,10 @@ export default function Feed({user, handleLogout}) {
     }
   }
 
-
-  // C create in Crud
-  // we invoke this function in addPost component when the submit button on our form is clicked
-  // so we need to pass it as a prop
   async function handleAddSuspect(suspect) {
     try {
       setLoading(true);
-      const data = await suspectsAPI.create(suspect); // our server is going to return
-      // the created post, that will be inside of data, which is the response from
-      // the server, we then want to set it in state
+      const data = await suspectsAPI.create(suspect);
       console.log(data, " this is response from the server, in handleAddSuspect");
       setSuspects([data.suspect, ...suspects]);
       setLoading(false);
@@ -58,7 +51,6 @@ export default function Feed({user, handleLogout}) {
     }
   }
 
-  // R read in crud
   async function getSuspects() {
     try {
       const data = await suspectsAPI.getAll();
@@ -71,14 +63,10 @@ export default function Feed({user, handleLogout}) {
     }
   }
 
-  // useEffect runs once
-  // the component is first rendered (whenever you first view the component)
-  // Component Lifecycle in react
   useEffect(() => {
     getSuspects();
   }, []);
 
- 
   if (error) {
     return (
       <>

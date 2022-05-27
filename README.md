@@ -1,37 +1,33 @@
-## Setup 
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+# Everybody Else Is Paranoid
 
 
-#### Setup your git repo
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2. Then you can run the following commands in the root of your project 
+## They're not watching you (plural), they're watching YOU (singular).
+## Log in to have all your suspicions confirmed.
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be, look at the address in the code github gives you!
-git push -u origin main
-```
+A Project by: Ollo Clark
 
-#### Setup the App
+Everybody Else Is Paranoid (EEIP) is a tongue-in-cheek, governmental dystopian
+MERN app, designed to play on user expectations. Upload a profile picture?
+Why? Just because they told you to? Tell them your email? Just because they asked?
 
-```npm install```
+Continued devlopment will add to, and gamify, more aspects of .gov banality.
 
-*DOTENV*
 
-`touch .env`
 
-add your variables
 
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
+## Technologies used:
 
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+HTML, CSS, JSX, React, Express, Node.js, Nodemon, Mongoose, MongoDB,
+Amazon AWS.
+## Getting Started:
+
+-link to deployed app: https://everybodyelseisparanoid.herokuapp.com/
+-link to Trello board: https://trello.com/b/XJ7fDce8/everyone-else-is-paranoid
+## Next Steps:
+
+- Add more Math.random capabilities
+- Continue to work on CSS
+- Gamify log in and info process
+- Allow snoops to influence how often a suspect appears
