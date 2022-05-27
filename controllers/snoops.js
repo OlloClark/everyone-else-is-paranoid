@@ -15,7 +15,7 @@ async function create(req, res){
         await suspect.save()// save it
         res.status(201).json({data: 'snoop added'})
     } catch(err){
-       
+       console.log("snoop create function not firing")
         res.status(400).json({err})
     }
     

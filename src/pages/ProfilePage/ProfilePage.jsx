@@ -21,19 +21,6 @@ export default function ProfilePage(props) {
   // We need to grab the username out of the url,
   const { username } = useParams();
 
-  async function getProfile() {
-    try {
-      const data = await userService.getProfile(username);
-      console.log(data, " < -- data");
-      setLoading(() => false);
-      setUser(() => data.user);
-      setSuspects(() => data.suspects);
-    } catch (err) {
-      console.log(err);
-      setError("Profile Doesn't exists, CHECK YOUR TERMINAL FOR EXPRESS!");
-    }
-  }
-
   async function addSnoop(suspectId){
     try {
       const data = await snoopsAPI.create(suspectId)
@@ -56,6 +43,21 @@ export default function ProfilePage(props) {
       setError(err.message);
     }
   }
+
+  async function getProfile() {
+    try {
+      const data = await userService.getProfile(username);
+      console.log(data, " < -- data");
+      setLoading(() => false);
+      setUser(() => data.user);
+      setSuspects(() => data.suspects);
+    } catch (err) {
+      console.log(err);
+      setError("Profile Doesn't exists, CHECK YOUR TERMINAL FOR EXPRESS!");
+    }
+  }
+
+  
 
 
   // then when the component loads we can use that username to fetch all the users data

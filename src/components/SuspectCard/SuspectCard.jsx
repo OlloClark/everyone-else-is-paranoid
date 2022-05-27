@@ -5,9 +5,6 @@ import suspicious from "../../assets/suspicious.png"
 
 function SuspectCard({ suspect, isProfile, user, removeSnoop, addSnoop }) {
 
-  // function handleDel() {
-  //   removeSuspect(suspect._id)
-  // }
 
   // We need to know if the logged in user has liked this particular post!
   // we search the array of objects that is post.likes to see if the logged in users
@@ -90,7 +87,7 @@ function SuspectCard({ suspect, isProfile, user, removeSnoop, addSnoop }) {
                 align="right"
                 name="user secret"
                 size="large"
-                color="black"
+                color={snoopColor}
                 onClick={clickHandler}
                 />
                 {suspect.snoops.length} Snoops. We need more.

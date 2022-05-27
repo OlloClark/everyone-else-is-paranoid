@@ -7,13 +7,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
 import * as suspectsAPI from "../../utils/suspectAPI";
 import * as snoopsAPI from '../../utils/snoopAPI';
-
-
-
-
 import { Grid } from "semantic-ui-react";
-
-
 
 export default function Feed({user, handleLogout}) {
   console.log(suspectsAPI, " <-- suspectsAPI")
