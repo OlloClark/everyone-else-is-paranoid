@@ -10,28 +10,7 @@ import { useParams } from "react-router-dom";
 import * as snoopsAPI from '../../utils/snoopAPI';
 
 
-async function addSnoop(suspectId){
-  try {
-    const data = await snoopsAPI.create(suspectId)
-    console.log(data, ' <- response from the server when we add a snoop');
-    getProfile(); // <- to go get the updated posts with the like
-  } catch(err){
-    console.log(err)
-    setError(err.message)
-  }
-}
 
-async function removeSnoop(snoopId){
-  try {
-    const data = await snoopsAPI.removeSnoop(snoopId);
-    console.log(data, '<- the response from server when we remove a snoop')
-    getProfile()
-    
-  } catch(err){
-    console.log(err);
-    setError(err.message);
-  }
-}
 
 
 export default function ProfilePage(props) {
@@ -52,6 +31,29 @@ export default function ProfilePage(props) {
     } catch (err) {
       console.log(err);
       setError("Profile Doesn't exists, CHECK YOUR TERMINAL FOR EXPRESS!");
+    }
+  }
+
+  async function addSnoop(suspectId){
+    try {
+      const data = await snoopsAPI.create(suspectId)
+      console.log(data, ' <- response from the server when we add a snoop');
+      getProfile(); // <- to go get the updated posts with the like
+    } catch(err){
+      console.log(err)
+      setError(err.message)
+    }
+  }
+  
+  async function removeSnoop(snoopId){
+    try {
+      const data = await snoopsAPI.removeSnoop(snoopId);
+      console.log(data, '<- the response from server when we remove a snoop')
+      getProfile()
+      
+    } catch(err){
+      console.log(err);
+      setError(err.message);
     }
   }
 

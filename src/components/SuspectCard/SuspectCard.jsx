@@ -23,7 +23,7 @@ function SuspectCard({ suspect, isProfile, user, removeSuspect, removeSnoop, add
 
   // if the logged users id exists, the heart should be red, because the logged in user has liked the post
   // and the clicked handler should removeLike
-  const snoopColor = likeIndex > -1 ? "purple" : "black";
+  const snoopColor = snoopIndex > -1 ? "purple" : "black";
 
   function suspectWatching() {
 		const suspectChoices = ["suspect is PROBABLY watching you", "suspect is DEFINITELY watching you"]
