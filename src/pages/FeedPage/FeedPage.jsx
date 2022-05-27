@@ -58,16 +58,16 @@ export default function Feed({user, handleLogout}) {
     getSuspects();
   }, []);
 
-  async function removeSuspect(suspectId){
-    try {
-        const data = await suspectsAPI.removeSuspect(suspectId);
-        console.log("removal>>>>>>>",data,"<<<< removal")
-        getSuspects()
-    } catch (err) {
-        console.log(err)
-        setError(err.message)
-    }
-}
+//   async function removeSuspect(suspectId){
+//     try {
+//         const data = await suspectsAPI.removeSuspect(suspectId);
+//         console.log("removal>>>>>>>",data,"<<<< removal")
+//         getSuspects()
+//     } catch (err) {
+//         console.log(err)
+//         setError(err.message)
+//     }
+// }
 
 
 
