@@ -9,6 +9,7 @@ export function create(suspectId){
 			'Authorization': 'Bearer ' + tokenService.getToken()
 		  }
 	}).then(res => {
+		console.log("fetching correctly for add snoop")
 		if(res.ok) return res.json()
 		throw new Error('Not logged In! Check Express terminal')
 	})
@@ -21,6 +22,7 @@ export function removeSnoop(snoopId){
 			'Authorization': 'Bearer ' + tokenService.getToken()
 		  }
 	}).then(res => {
+		console.log("fetching correctly for delete snoop")
 		if(res.ok) return res.json()
 		throw new Error('Not logged In! Check Express terminal')
 	})
