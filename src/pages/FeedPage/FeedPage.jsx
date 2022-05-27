@@ -6,6 +6,7 @@ import SuspectGallery from "../../components/SuspectGallery/SuspectGallery";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
 import * as suspectsAPI from "../../utils/suspectAPI";
+import * as snoopsAPI from '../../utils/snoopAPI';
 
 
 
@@ -19,6 +20,30 @@ export default function Feed({user, handleLogout, removeSuspect}) {
   const [suspects, setSuspects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  async function addSnoop(suspectId){
+    try {
+      const data = await snoopsAPI.create(suspectId)
+      console.log(data, ' <- the response from the server when we add a snoop');
+      getSuspects(); // <- to go get the updated posts with the like
+    } catch(err){
+      console.log(err)
+      setError(err.message)
+    }
+  }
+
+  async function removeSnoop(snoopId){
+    try {
+      const data = await snoopsAPI.removeSnoop(snoopId);
+      console.log(data, '<-  this is the response from the server when we remove a snoop')
+      getSuspects()
+      
+    } catch(err){
+      console.log(err);
+      setError(err.message);
+    }
+  }
+
 
   // C create in Crud
   // we invoke this function in addPost component when the submit button on our form is clicked
@@ -104,6 +129,8 @@ export default function Feed({user, handleLogout, removeSuspect}) {
       <Grid.Row>
         <Grid.Column style={{ maxWidth: 450 }}>
           <SuspectGallery
+            addSnoop={addSnoop}
+            removeSnoop={removeSnoop}
             suspects={suspects}
             numPhotosCol={2}
             isProfile={false}

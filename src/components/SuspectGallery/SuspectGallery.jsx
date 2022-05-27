@@ -3,7 +3,7 @@ import { Card, Dimmer, Segment, Image  } from 'semantic-ui-react'
 import SuspectCard from '../SuspectCard/SuspectCard';
 import Loader from '../Loader/Loader';
 
-export default function SuspectFeed({suspects, numPhotosCol, isProfile, loading, user, removeSuspect }){
+export default function SuspectFeed({suspects, numPhotosCol, isProfile, loading, user, removeSuspect, addSnoop, removeSnoop }){
 
     return (
         <Card.Group itemsPerRow={numPhotosCol} stackable>
@@ -18,6 +18,8 @@ export default function SuspectFeed({suspects, numPhotosCol, isProfile, loading,
         {suspects.map((suspect) => {
           return (
             <SuspectCard
+              addSnoop={addSnoop}
+              removeSnoop={removeSnoop}
               suspect={suspect}
               key={suspect._id}
               isProfile={isProfile}

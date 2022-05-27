@@ -5,13 +5,33 @@ import Loading from "../../components/Loader/Loader";
 import ProfileBio from "../../components/ProfileBio/ProfileBio";
 import SuspectGallery from "../../components/SuspectGallery/SuspectGallery";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-
 import userService from "../../utils/userService";
-
 import { useParams } from "react-router-dom";
+import * as snoopsAPI from '../../utils/snoopApi';
 
 
+async function addSnoop(suspectId){
+  try {
+    const data = await snoopsAPI.create(suspectId)
+    console.log(data, ' <- response from the server when we add a snoop');
+    getProfile(); // <- to go get the updated posts with the like
+  } catch(err){
+    console.log(err)
+    setError(err.message)
+  }
+}
 
+async function removeSnoop(snoopId){
+  try {
+    const data = await snoopsAPI.removeSnoop(snoopId);
+    console.log(data, '<- the response from server when we remove a snoop')
+    getProfile()
+    
+  } catch(err){
+    console.log(err);
+    setError(err.message);
+  }
+}
 
 
 export default function ProfilePage(props) {
@@ -78,10 +98,13 @@ export default function ProfilePage(props) {
       <Grid.Row centered>
         <Grid.Column style={{ maxWidth: 750 }}>
         <SuspectGallery
+            addSnoop={addSnoop}
+            removeSnoop={removeSnoop}
             isProfile={true}
             suspects={suspects}
             numPhotosCol={3}
             user={props.user}
+            
           />
         </Grid.Column>
       </Grid.Row>

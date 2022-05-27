@@ -2,11 +2,28 @@ import React from "react";
 import { Card, Image, Container, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import suspicious from "../../assets/suspicious.png"
-function SuspectCard({ suspect, isProfile, user, removeSuspect }) {
+
+function SuspectCard({ suspect, isProfile, user, removeSuspect, removeSnoop, addSnoop }) {
 
   // function handleDel() {
   //   removeSuspect(suspect._id)
   // }
+
+  // We need to know if the logged in user has liked this particular post!
+  // we search the array of objects that is post.likes to see if the logged in users
+  // id exists in that array of objects
+  const snoopIndex = suspect.snoops.findIndex(
+    (snoop) => snoop.username === user.username
+  );
+
+  const clickHandler =
+    snoopIndex > -1
+      ? () => removeSnoop(suspect.snoops[snoopIndex]._id)
+      : () => addSnoop(suspect._id);
+
+  // if the logged users id exists, the heart should be red, because the logged in user has liked the post
+  // and the clicked handler should removeLike
+  const snoopColor = likeIndex > -1 ? "purple" : "black";
 
   function suspectWatching() {
 		const suspectChoices = ["suspect is PROBABLY watching you", "suspect is DEFINITELY watching you"]
@@ -74,8 +91,9 @@ function SuspectCard({ suspect, isProfile, user, removeSuspect }) {
                 name="user secret"
                 size="large"
                 color="black"
-                onClick={removeSuspect}
+                onClick={clickHandler}
                 />
+                {suspect.snoops.length} Snoops. We need more.
             </Container>
       </Card.Content>
     </Card>
