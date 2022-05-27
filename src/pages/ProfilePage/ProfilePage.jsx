@@ -7,7 +7,7 @@ import SuspectGallery from "../../components/SuspectGallery/SuspectGallery";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import userService from "../../utils/userService";
 import { useParams } from "react-router-dom";
-import * as snoopsAPI from '../../utils/snoopApi';
+import * as snoopsAPI from '../../utils/snoopAPI';
 
 
 async function addSnoop(suspectId){
