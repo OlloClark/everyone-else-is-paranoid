@@ -12,7 +12,7 @@ Everybody Else Is Paranoid (EEIP) is a tongue-in-cheek, governmental dystopian
 MERN app, designed to play on user expectations. Upload a profile picture?
 Why? Just because they told you to? Tell them your email? Just because they asked?
 
-Continued devlopment will add to, and gamify, more aspects of .gov banality.
+Continued development will add to, and gamify, more aspects of .gov banality.
 
 
 
