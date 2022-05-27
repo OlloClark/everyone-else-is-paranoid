@@ -35,7 +35,7 @@ export default function AddSuspectForm(props){
         <Segment>
         
           <div>
-            Type first and last name. We will consult our databases and return one of the following:
+            Type first and last name of the friend/relation/shopkeeper/shrub/bystander/celebrity you suspect is watching you. We will consult our databases and return one of the following:
             <br />
             Suspect is DEFINITELY watching you
             <br />
