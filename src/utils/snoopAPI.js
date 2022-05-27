@@ -9,8 +9,11 @@ export function create(suspectId){
 			'Authorization': 'Bearer ' + tokenService.getToken()
 		  }
 	}).then(res => {
-		console.log("fetching correctly for add snoop for")
-		if(res.ok) return res.json()
+		
+		if(res.ok) {
+			console.log("res is okay")
+			return res.json()
+		}
 		throw new Error('create snoop error: res not ok')
 	})
 }
