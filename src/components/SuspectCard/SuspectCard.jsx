@@ -24,7 +24,7 @@ function SuspectCard({ suspect, isProfile, user, removeSnoop, addSnoop }) {
 	 }
 
    function showRealName() {
-    const suspectNames = ["Aldrich “Rick” Ames", "Carl Lody", "Emil Julius Klaus Fuchs", "Frederick “Fritz” Joubert Duquesne"]
+    const suspectNames = ["Aldrich “Rick” Ames", "Carl Lody", "Emil Julius Klaus Fuchs", "Frederick “Fritz” Joubert Duquesne", "Elizabeth Van Lew", "John Anthony Walker", "Larry Wu-Tahi Chin", "Rose O’Neal Greenhow", "Sir Francis Walsingham"]
     const randSuspectName = Math.floor(Math.random() * suspectNames.length)
   
     return (suspectNames[randSuspectName])
