@@ -11,7 +11,7 @@ export function create(suspectId){
 	}).then(res => {
 		console.log("fetching correctly for add snoop")
 		if(res.ok) return res.json()
-		throw new Error('Not logged In! Check Express terminal')
+		throw new Error('create snoop error: Not logged In! Check Express terminal')
 	})
 }
 
@@ -24,6 +24,6 @@ export function removeSnoop(snoopId){
 	}).then(res => {
 		console.log("fetching correctly for delete snoop")
 		if(res.ok) return res.json()
-		throw new Error('Not logged In! Check Express terminal')
+		throw new Error('delete snoop error: Not logged In! Check Express terminal')
 	})
 }
