@@ -3,7 +3,7 @@ import { Card, Image, Container, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import suspicious from "../../assets/suspicious.png"
 
-function SuspectCard({ suspect, isProfile, user, removeSuspect, removeSnoop, addSnoop }) {
+function SuspectCard({ suspect, isProfile, user, removeSnoop, addSnoop }) {
 
   // function handleDel() {
   //   removeSuspect(suspect._id)

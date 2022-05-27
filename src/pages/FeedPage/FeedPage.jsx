@@ -15,7 +15,7 @@ import { Grid } from "semantic-ui-react";
 
 
 
-export default function Feed({user, handleLogout, removeSuspect}) {
+export default function Feed({user, handleLogout}) {
   console.log(suspectsAPI, " <-- suspectsAPI")
   const [suspects, setSuspects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -83,19 +83,7 @@ export default function Feed({user, handleLogout, removeSuspect}) {
     getSuspects();
   }, []);
 
-  async function removeSuspect(suspectId){
-    try {
-        const data = await suspectsAPI.removeSuspect(suspectId);
-        console.log("removal>>>>>>>",data,"<<<< removal")
-        getSuspects()
-    } catch (err) {
-        console.log(err)
-        setError(err.message)
-    }
-}
-
-
-
+ 
   if (error) {
     return (
       <>
@@ -136,7 +124,6 @@ export default function Feed({user, handleLogout, removeSuspect}) {
             isProfile={false}
             loading={loading}
             user={user}
-            removeSuspect={removeSuspect}
           />
         </Grid.Column>
       </Grid.Row>

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const snoopSchema = mongoose.Schema({
+const snoopsSchema = mongoose.Schema({
   username: String,
   userId: { type: mongoose.Schema.Types.ObjectId }
 })

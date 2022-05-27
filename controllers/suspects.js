@@ -7,7 +7,6 @@ const s3 = new S3();
 module.exports = {
     create,
     index,
-    delete: deleteSuspect
 }
 
 function create(req, res){
@@ -28,17 +27,6 @@ function create(req, res){
     } catch(err){
         console.log(err)
         res.json({data: err})
-    }
-}
-
-async function deleteSuspect(req, res){
-    try {
-        const suspect = await Suspect.findOne({'suspects.id': req.params.id})
-        post.remove()
-        console.log(post,"has been deleted")
-        res.json({data:'SUSPECT HAS BEEN REDACTED'})
-    } catch(err){
-        res.status(400).json({err})
     }
 }
 
