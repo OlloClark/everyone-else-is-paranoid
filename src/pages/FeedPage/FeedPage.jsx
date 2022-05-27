@@ -28,6 +28,7 @@ export default function Feed({user, handleLogout}) {
       getSuspects(); // <- to go get the updated posts with the like
     } catch(err){
       console.log(err)
+      console.log("this error is coming from FeedPage")
       setError(err.message)
     }
   }
